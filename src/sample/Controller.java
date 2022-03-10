@@ -19,6 +19,7 @@ public class Controller {
     @FXML
     private URL location;
 
+    // Зміні, що посилаються на об'єкти з вікна додатку
     @FXML
     private TextField city;
 
@@ -42,12 +43,17 @@ public class Controller {
 
     @FXML
     void initialize() {
+        // При натисненні на кнопку
         getData.setOnAction(event -> {
-            String userCity = city.getText().trim(); // отримуємо назву міста з форми введення
-            if (!userCity.equals("")) {
+            // Отримуємо дані з текстового поля
+            String userCity = city.getText().trim();
+            if (!userCity.equals("")) { // якщо дані не пусті
+                // Отримуємо дані про погоду з сайту openweathermap.org
                 String output = getUrlContent("http://api.openweathermap.org/data/2.5/weather?q=" + userCity + "&APPID=5d0788ab0be4ac1f063b81f9be16785c&units=metric");
-                if (!output.isEmpty()) {
+
+                if (!output.isEmpty()) { // Нема помилки і таке місто існує
                     JSONObject object = new JSONObject(output);
+                    // Обробляємо JSON і встановлюємо дані в текстові написи
                     temp_info.setText("Температура: " + object.getJSONObject("main").getDouble("temp"));
                     temp_feels.setText("По-вiдчуттям: " + object.getJSONObject("main").getDouble("feels_like"));
                     temp_max.setText("Максимум: " + object.getJSONObject("main").getDouble("temp_max"));
@@ -58,6 +64,7 @@ public class Controller {
         });
     }
 
+    // Обробка URL адресу і отримання даних з нього
     private static String getUrlContent(String urlAddress) {
         StringBuffer content = new StringBuffer();
         try {
