@@ -10,7 +10,7 @@
     <children>
         <AnchorPane layoutY="86.0" prefHeight="500.0" prefWidth="290.0" style="-fx-background-color: #333;">
             <children>
-                <TextField fx:id="city" focusTraversable="false" layoutX="29.0" layoutY="25.0" prefHeight="30.0" prefWidth="233.0" promptText="Введiть мiсто" style="-fx-background-color: #333; -fx-border-color: gray; -fx-border-radius: 7;">
+                <TextField fx:id="city" focusTraversable="false" layoutX="29.0" layoutY="25.0" onAction="#initialize" prefHeight="30.0" prefWidth="233.0" promptText="Введiть мiсто" style="-fx-text-fill: grey; -fx-background-color: #333; -fx-border-color: gray; -fx-border-radius: 7;">
                     <font>
                         <Font name="Panton Black Caps" size="14.0" />
                     </font>
